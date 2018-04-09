@@ -9,7 +9,7 @@ public class Main {
     private PointOfSale pointOfSale;
 
     public Main() {
-        pointOfSale = new PointOfSale();
+        // pointOfSale = new PointOfSale();
     }
 
     public static void main() {
@@ -20,7 +20,7 @@ public class Main {
     private void start() {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
-            pointOfSale.onBarcode(scanner.nextLine());
+            // pointOfSale.onBarcode(scanner.nextLine());
         }
     }
 }

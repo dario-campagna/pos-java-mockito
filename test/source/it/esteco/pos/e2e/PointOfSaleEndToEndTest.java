@@ -1,6 +1,7 @@
 package it.esteco.pos.e2e;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class PointOfSaleEndToEndTest {
@@ -14,7 +15,7 @@ public class PointOfSaleEndToEndTest {
         applicationRunner = new ApplicationRunner();
     }
 
-    @Test
+    @Test@Ignore
     public void productFound() {
         fakeOperator.input("123456\n");
         applicationRunner.start();
