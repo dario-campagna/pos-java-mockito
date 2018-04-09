@@ -1,7 +1,7 @@
 package it.esteco.pos;
 
 public interface Display {
-    void showPrice(String priceAsText);
+    void showPrice(Money price);
 
     void showProductNotFoundFor(String s);
 

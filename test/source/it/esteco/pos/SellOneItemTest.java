@@ -23,7 +23,8 @@ public class SellOneItemTest {
 
     @Test
     public void productFound() {
-        String barcode = "123456", price = "$7.95";
+        String barcode = "123456";
+        Money price = new Money(795);
         when(catalog.findPrice(barcode)).thenReturn(price);
 
         pointOfSale.onBarcode(barcode);
@@ -34,7 +35,8 @@ public class SellOneItemTest {
 
     @Test
     public void anotherProductFound() {
-        String barcode = "789987", price = "$11.99";
+        String barcode = "789987";
+        Money price = new Money(1199);
         when(catalog.findPrice(barcode)).thenReturn(price);
 
         pointOfSale.onBarcode(barcode);
