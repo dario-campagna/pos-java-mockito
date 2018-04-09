@@ -1,4 +1,6 @@
-package it.esteco.pos;
+package it.esteco.pos.domain.port;
+
+import it.esteco.pos.domain.Money;
 
 public interface Display {
     void showPrice(Money price);

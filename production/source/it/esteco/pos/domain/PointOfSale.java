@@ -1,4 +1,7 @@
-package it.esteco.pos;
+package it.esteco.pos.domain;
+
+import it.esteco.pos.domain.port.Catalog;
+import it.esteco.pos.domain.port.Display;
 
 public class PointOfSale {
     private Display display;
