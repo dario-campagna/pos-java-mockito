@@ -2,6 +2,7 @@ package it.esteco.pos;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InOrder;
 
 import static org.mockito.Mockito.*;
 
@@ -10,43 +11,49 @@ public class SellOneItemTest {
     private Display display;
     private PointOfSale pointOfSale;
     private Catalog catalog;
+    private InOrder inOrder;
 
     @Before
     public void setUp() {
         display = mock(Display.class);
         catalog = mock(Catalog.class);
         pointOfSale = new PointOfSale(display, catalog);
+        inOrder = inOrder(catalog, display);
     }
 
     @Test
     public void productFound() {
-        when(catalog.findPrice("123456")).thenReturn("$7.95");
+        String barcode = "123456", price = "$7.95";
+        when(catalog.findPrice(barcode)).thenReturn(price);
 
-        pointOfSale.onBarcode("123456");
+        pointOfSale.onBarcode(barcode);
 
-        verify(display).showPrice("$7.95");
+        inOrder.verify(catalog).findPrice(barcode);
+        inOrder.verify(display, times(1)).showPrice(price);
     }
 
     @Test
     public void anotherProductFound() {
-        when(catalog.findPrice("789987")).thenReturn("$11.99");
+        String barcode = "789987", price = "$11.99";
+        when(catalog.findPrice(barcode)).thenReturn(price);
 
-        pointOfSale.onBarcode("789987");
+        pointOfSale.onBarcode(barcode);
 
-        verify(display).showPrice("$11.99");
+        inOrder.verify(catalog).findPrice(barcode);
+        inOrder.verify(display, times(1)).showPrice(price);
     }
 
     @Test
     public void productNotFound() {
         pointOfSale.onBarcode("999999");
 
-        verify(display).showProductNotFoundFor("999999");
+        verify(display, times(1)).showProductNotFoundFor("999999");
     }
 
     @Test
     public void emptyBarcode() {
         pointOfSale.onBarcode("");
 
-        verify(display).showEmptyBarcodeError();
+        verify(display, times(1)).showEmptyBarcodeError();
     }
 }
