@@ -1,16 +1,16 @@
 package it.esteco.pos;
 
 import it.esteco.pos.adapters.ConsoleDisplay;
-import it.esteco.pos.domain.Catalog;
+import it.esteco.pos.adapters.InMemoryCatalog;
 
 import java.util.Scanner;
 
-public class Main implements Catalog {
+public class Main {
 
     private PointOfSale pointOfSale;
 
     public Main() {
-        pointOfSale = new PointOfSale(new ConsoleDisplay(), this);
+        pointOfSale = new PointOfSale(new ConsoleDisplay(), new InMemoryCatalog());
     }
 
     public static void main() {
@@ -22,17 +22,6 @@ public class Main implements Catalog {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             pointOfSale.onBarcode(scanner.nextLine());
-        }
-    }
-
-    @Override
-    public String findPrice(String barcode) {
-        if ("123456".equals(barcode)) {
-            return "$7.95";
-        } else if ("789987".equals(barcode)) {
-            return "$11.99";
-        } else {
-            return null;
         }
     }
 

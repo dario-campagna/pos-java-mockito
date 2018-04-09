@@ -31,7 +31,7 @@ public class ApplicationRunner {
         checkConsoleOutputIs(priceMessage);
     }
 
-    public void showsProductNotFound(String barcode) {
+    public void showsProductNotFound() {
         checkConsoleOutputIs("Product not found for 000000");
     }
 

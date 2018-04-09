@@ -39,6 +39,6 @@ public class PointOfSaleEndToEndTest {
     public void productNotFound() {
         fakeOperator.input("000000\n");
         applicationRunner.start();
-        applicationRunner.showsProductNotFound("000000");
+        applicationRunner.showsProductNotFound();
     }
 }
