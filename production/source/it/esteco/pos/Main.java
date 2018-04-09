@@ -28,4 +28,9 @@ public class Main implements Display {
     public void showEmptyBarcodeError() {
         System.out.printf("Scan error: empty barcode!");
     }
+
+    @Override
+    public void showPrice(String priceAsText) {
+        System.out.println("$7.95");
+    }
 }

@@ -16,4 +16,14 @@ public class SellOneItemTest {
 
         verify(display).showEmptyBarcodeError();
     }
+
+    @Test
+    public void productFound() {
+        Display display = mock(Display.class);
+        PointOfSale pointOfSale = new PointOfSale(display);
+
+        pointOfSale.onBarcode("123456");
+
+        verify(display).showPrice("$7.95");
+    }
 }

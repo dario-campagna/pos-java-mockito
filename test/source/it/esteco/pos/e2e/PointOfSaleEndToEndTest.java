@@ -21,4 +21,11 @@ public class PointOfSaleEndToEndTest {
         applicationRunner.start();
         applicationRunner.showsEmptyBarcodeError();
     }
+
+    @Test
+    public void productFound() {
+        fakeOperator.input("123456\n");
+        applicationRunner.start();
+        applicationRunner.showsPrice("$7.95");
+    }
 }

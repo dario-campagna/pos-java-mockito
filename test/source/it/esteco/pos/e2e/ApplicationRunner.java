@@ -26,4 +26,8 @@ public class ApplicationRunner {
     public void showsEmptyBarcodeError() {
         assertThat(scanner.nextLine(), is(equalTo("Scan error: empty barcode!")));
     }
+
+    public void showsPrice(String priceMessage) {
+        assertThat(scanner.nextLine(), is(equalTo(priceMessage)));
+    }
 }
