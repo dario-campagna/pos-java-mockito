@@ -1,6 +1,7 @@
 package it.esteco.pos.adapters;
 
 import it.esteco.pos.domain.Display;
+import it.esteco.pos.domain.Money;
 
 public class ConsoleDisplay implements Display {
     @Override
@@ -9,12 +10,12 @@ public class ConsoleDisplay implements Display {
     }
 
     @Override
-    public void showPrice(String priceAsText) {
-        System.out.println(priceAsText);
+    public void showProductNotFound(String barcode) {
+        System.out.println("Product not found for " + barcode);
     }
 
     @Override
-    public void showProductNotFound(String barcode) {
-        System.out.println("Product not found for " + barcode);
+    public void showPrice(Money price) {
+        System.out.println("$" + price.integerPart() + "." + price.fractionalPart());
     }
 }

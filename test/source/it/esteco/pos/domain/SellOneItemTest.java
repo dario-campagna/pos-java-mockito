@@ -27,22 +27,22 @@ public class SellOneItemTest {
 
     @Test
     public void productFound() {
-        when(catalog.findPrice("123456")).thenReturn("$7.95");
+        when(catalog.findPrice("123456")).thenReturn(new Money(795));
 
         pointOfSale.onBarcode("123456");
 
         verify(catalog).findPrice("123456");
-        verify(display).showPrice("$7.95");
+        verify(display).showPrice(new Money(795));
     }
 
     @Test
     public void anotherProductFound() {
-        when(catalog.findPrice("789987")).thenReturn("$11.99");
+        when(catalog.findPrice("789987")).thenReturn(new Money(1199));
 
         pointOfSale.onBarcode("789987");
 
         verify(catalog).findPrice("789987");
-        verify(display).showPrice("$11.99");
+        verify(display).showPrice(new Money(1199));
     }
 
     @Test

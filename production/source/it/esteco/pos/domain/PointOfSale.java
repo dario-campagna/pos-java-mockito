@@ -15,15 +15,15 @@ public class PointOfSale {
             return;
         }
         
-        String priceAsText = catalog.findPrice(barcode);
-        if (priceAsText != null) {
-            display.showPrice(priceAsText);
+        Money price = catalog.findPrice(barcode);
+        if (price != null) {
+            display.showPrice(price);
         } else {
             display.showProductNotFound(barcode);
         }
     }
 
     public void onTotalRequested() {
-        display.showPrice("$0.00");
+        display.showPrice(new Money(0));
     }
 }
