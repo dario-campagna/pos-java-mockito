@@ -41,4 +41,11 @@ public class PointOfSaleEndToEndTest {
         applicationRunner.start();
         applicationRunner.showsProductNotFound();
     }
+
+    @Test
+    public void totalForNoProducts() {
+        fakeOperator.input("TOTAL\n");
+        applicationRunner.start();
+        applicationRunner.showsTotal();
+    }
 }

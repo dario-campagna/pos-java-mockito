@@ -22,4 +22,8 @@ public class PointOfSale {
             display.showProductNotFound(barcode);
         }
     }
+
+    public void onTotalRequested() {
+        display.showPrice("$0.00");
+    }
 }

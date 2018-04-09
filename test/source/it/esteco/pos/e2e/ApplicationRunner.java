@@ -35,6 +35,10 @@ public class ApplicationRunner {
         checkConsoleOutputIs("Product not found for 000000");
     }
 
+    public void showsTotal() {
+        checkConsoleOutputIs("$0.00");
+    }
+
     private void checkConsoleOutputIs(String priceMessage) {
         assertThat(scanner.nextLine(), is(equalTo(priceMessage)));
     }
