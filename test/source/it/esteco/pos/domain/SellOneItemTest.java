@@ -15,7 +15,7 @@ public class SellOneItemTest {
     public void setUp() {
         display = mock(Display.class);
         catalog = mock(Catalog.class);
-        pointOfSale = new PointOfSale(display, catalog);
+        pointOfSale = new PointOfSale(display, catalog, mock(Cart.class));
     }
 
     @Test

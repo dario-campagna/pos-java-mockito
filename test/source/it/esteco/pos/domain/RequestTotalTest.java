@@ -10,16 +10,20 @@ public class RequestTotalTest {
     private Display display;
     private Catalog catalog;
     private PointOfSale pointOfSale;
+    private Cart cart;
 
     @Before
     public void setUp() throws Exception {
         display = mock(Display.class);
         catalog = mock(Catalog.class);
-        pointOfSale = new PointOfSale(display, catalog);
+        cart = mock(Cart.class);
+        pointOfSale = new PointOfSale(display, catalog, cart);
     }
 
     @Test
     public void noProductsScanned() {
+        when(cart.getTotal()).thenReturn(new Money(0));
+
         pointOfSale.onTotalRequested();
 
         verify(display).showPrice(new Money(0));
@@ -28,11 +32,14 @@ public class RequestTotalTest {
     @Test
     public void oneProductScanned() {
         when(catalog.findPrice("123456")).thenReturn(new Money(795));
+        when(cart.getTotal()).thenReturn(new Money(795));
 
         pointOfSale.onBarcode("123456");
 
+
         pointOfSale.onTotalRequested();
 
+        verify(cart).add(new Money(795));
         verify(display, times(2)).showPrice(new Money(795));
     }
 }
