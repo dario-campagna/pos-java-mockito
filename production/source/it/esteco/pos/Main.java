@@ -31,7 +31,7 @@ public class Main implements Display {
 
     @Override
     public void showPrice(String priceAsText) {
-        System.out.println("$7.95");
+        System.out.println(priceAsText);
     }
 
     @Override
