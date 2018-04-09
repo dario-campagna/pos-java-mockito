@@ -1,15 +1,16 @@
 package it.esteco.pos;
 
+import it.esteco.pos.domain.Catalog;
 import it.esteco.pos.domain.Display;
 
 import java.util.Scanner;
 
-public class Main implements Display {
+public class Main implements Display, Catalog {
 
     private PointOfSale pointOfSale;
 
     public Main() {
-        pointOfSale = new PointOfSale(this);
+        pointOfSale = new PointOfSale(this, this);
     }
 
     public static void main() {
@@ -37,5 +38,16 @@ public class Main implements Display {
     @Override
     public void showProductNotFound(String barcode) {
         System.out.println("Product not found for " + barcode);
+    }
+
+    @Override
+    public String findPrice(String barcode) {
+        if ("123456".equals(barcode)) {
+            return "$7.95";
+        } else if ("789987".equals(barcode)) {
+            return "$11.99";
+        } else {
+            return null;
+        }
     }
 }

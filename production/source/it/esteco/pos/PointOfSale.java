@@ -1,23 +1,25 @@
 package it.esteco.pos;
 
+import it.esteco.pos.domain.Catalog;
 import it.esteco.pos.domain.Display;
 
 public class PointOfSale {
 
     private Display display;
+    private Catalog catalog;
 
-    public PointOfSale(Display display) {
+    public PointOfSale(Display display, Catalog catalog) {
         this.display = display;
+        this.catalog = catalog;
     }
 
     public void onBarcode(String barcode) {
         if ("".equals(barcode)) {
             display.showEmptyBarcodeError();
         } else {
-            if ("123456".equals(barcode)) {
-                display.showPrice("$7.95");
-            } else if ("789987".equals(barcode)) {
-                display.showPrice("$11.99");
+            String priceAsText = catalog.findPrice(barcode);
+            if (priceAsText != null) {
+                display.showPrice(priceAsText);
             } else {
                 display.showProductNotFound(barcode);
             }
