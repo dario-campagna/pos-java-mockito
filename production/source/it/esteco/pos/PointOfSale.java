@@ -1,7 +1,16 @@
 package it.esteco.pos;
 
-public class PointOfSale {
-    public void onBarcode(String barcode) {
+import it.esteco.pos.domain.Display;
 
+public class PointOfSale {
+
+    private Display display;
+
+    public PointOfSale(Display display) {
+        this.display = display;
+    }
+
+    public void onBarcode(String barcode) {
+        display.showEmptyBarcodeError();
     }
 }

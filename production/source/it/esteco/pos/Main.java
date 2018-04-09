@@ -1,13 +1,15 @@
 package it.esteco.pos;
 
+import it.esteco.pos.domain.Display;
+
 import java.util.Scanner;
 
-public class Main {
+public class Main implements Display {
 
     private PointOfSale pointOfSale;
 
     public Main() {
-        pointOfSale = new PointOfSale();
+        pointOfSale = new PointOfSale(this);
     }
 
     public static void main() {
@@ -22,4 +24,8 @@ public class Main {
         }
     }
 
+    @Override
+    public void showEmptyBarcodeError() {
+        System.out.printf("Scan error: empty barcode!");
+    }
 }

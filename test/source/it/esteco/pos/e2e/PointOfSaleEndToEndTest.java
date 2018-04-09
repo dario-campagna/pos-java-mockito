@@ -1,6 +1,7 @@
 package it.esteco.pos.e2e;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class PointOfSaleEndToEndTest {
