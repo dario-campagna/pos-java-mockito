@@ -25,4 +25,14 @@ public class SellOneItem {
 
         verify(display).showPrice("$11.99");
     }
+
+    @Test
+    public void productNotFound() {
+        Display display = mock(Display.class);
+        PointOfSale pointOfSale = new PointOfSale(display);
+
+        pointOfSale.onBarcode("999999");
+
+        verify(display).showProductNotFoundFor("999999");
+    }
 }
