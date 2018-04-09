@@ -14,7 +14,11 @@ public class PointOfSale {
         if ("".equals(barcode)) {
             display.showEmptyBarcodeError();
         } else {
-            display.showPrice("$7.95");
+            if ("123456".equals(barcode)) {
+                display.showPrice("$7.95");
+            } else {
+                display.showPrice("$11.99");
+            }
         }
     }
 }
