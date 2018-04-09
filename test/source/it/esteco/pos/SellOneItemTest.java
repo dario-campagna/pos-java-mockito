@@ -1,7 +1,7 @@
 package it.esteco.pos;
 
-import it.esteco.pos.domain.port.Catalog;
-import it.esteco.pos.domain.port.Display;
+import it.esteco.pos.domain.ports.Catalog;
+import it.esteco.pos.domain.ports.Display;
 import it.esteco.pos.domain.Money;
 import it.esteco.pos.domain.PointOfSale;
 import org.junit.Before;

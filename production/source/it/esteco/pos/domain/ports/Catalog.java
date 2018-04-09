@@ -1,4 +1,4 @@
-package it.esteco.pos.domain.port;
+package it.esteco.pos.domain.ports;
 
 import it.esteco.pos.domain.Money;
 
