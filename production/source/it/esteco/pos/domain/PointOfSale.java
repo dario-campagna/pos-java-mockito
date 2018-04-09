@@ -3,6 +3,7 @@ package it.esteco.pos.domain;
 public class PointOfSale {
     private Display display;
     private Catalog catalog;
+    private Money lastPrice = new Money(0);
 
     public PointOfSale(Display display, Catalog catalog) {
         this.display = display;
@@ -18,12 +19,13 @@ public class PointOfSale {
         Money price = catalog.findPrice(barcode);
         if (price != null) {
             display.showPrice(price);
+            lastPrice = price;
         } else {
             display.showProductNotFound(barcode);
         }
     }
 
     public void onTotalRequested() {
-        display.showPrice(new Money(0));
+        display.showPrice(lastPrice);
     }
 }
