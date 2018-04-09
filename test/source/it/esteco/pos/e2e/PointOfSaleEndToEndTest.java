@@ -53,6 +53,8 @@ public class PointOfSaleEndToEndTest {
     public void totalForProductsScanned() {
         fakeOperator.input("123456\n789987\nTOTAL\n");
         applicationRunner.start();
+        applicationRunner.showsPrice("$7.95");
+        applicationRunner.showsPrice("$11.99");
         applicationRunner.showsPrice("$19.94");
     }
 }

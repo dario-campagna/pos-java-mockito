@@ -8,13 +8,8 @@ public class Money {
         this.amount = amount;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Money) {
-            Money that = (Money) obj;
-            return this.amount == that.amount;
-        }
-        return false;
+    public Money plus(Money that) {
+        return new Money(this.amount + that.amount);
     }
 
     public String integerPart() {
@@ -28,5 +23,26 @@ public class Money {
         } else {
             return String.valueOf(fractionalPart);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Money{" +
+                "amount=" + amount +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Money) {
+            Money that = (Money) obj;
+            return this.amount == that.amount;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.amount * 19 + 5;
     }
 }

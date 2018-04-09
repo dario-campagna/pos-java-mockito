@@ -5,6 +5,7 @@ import it.esteco.pos.domain.Money;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BinaryOperator;
 
 public class InMemoryCart implements Cart {
 
@@ -17,6 +18,6 @@ public class InMemoryCart implements Cart {
 
     @Override
     public Money getTotal() {
-        return prices.size() == 0 ? new Money(0) : prices.get(0);
+        return prices.stream().reduce(new Money(0), (a, b) -> a.plus(b));
     }
 }
