@@ -24,14 +24,18 @@ public class ApplicationRunner {
     }
 
     public void showsEmptyBarcodeError() {
-        assertThat(scanner.nextLine(), is(equalTo("Scan error: empty barcode!")));
+        checkConsoleOutputIs("Scan error: empty barcode!");
     }
 
     public void showsPrice(String priceMessage) {
-        assertThat(scanner.nextLine(), is(equalTo(priceMessage)));
+        checkConsoleOutputIs(priceMessage);
     }
 
     public void showsProductNotFound(String barcode) {
-        assertThat(scanner.nextLine(), is(equalTo("Product not found for 000000")));
+        checkConsoleOutputIs("Product not found for 000000");
+    }
+
+    private void checkConsoleOutputIs(String priceMessage) {
+        assertThat(scanner.nextLine(), is(equalTo(priceMessage)));
     }
 }
