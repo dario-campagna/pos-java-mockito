@@ -33,4 +33,9 @@ public class Main implements Display {
     public void showPrice(String priceAsText) {
         System.out.println("$7.95");
     }
+
+    @Override
+    public void showProductNotFound(String barcode) {
+        System.out.println("Product not found for " + barcode);
+    }
 }

@@ -30,4 +30,8 @@ public class ApplicationRunner {
     public void showsPrice(String priceMessage) {
         assertThat(scanner.nextLine(), is(equalTo(priceMessage)));
     }
+
+    public void showsProductNotFound(String barcode) {
+        assertThat(scanner.nextLine(), is(equalTo("Product not found for 000000")));
+    }
 }

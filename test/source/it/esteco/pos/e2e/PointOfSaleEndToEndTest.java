@@ -28,4 +28,11 @@ public class PointOfSaleEndToEndTest {
         applicationRunner.start();
         applicationRunner.showsPrice("$7.95");
     }
+
+    @Test
+    public void productNotFound() {
+        fakeOperator.input("000000\n");
+        applicationRunner.start();
+        applicationRunner.showsProductNotFound("000000");
+    }
 }
