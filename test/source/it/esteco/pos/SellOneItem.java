@@ -35,4 +35,14 @@ public class SellOneItem {
 
         verify(display).showProductNotFoundFor("999999");
     }
+
+    @Test
+    public void emptyBarcode() {
+        Display display = mock(Display.class);
+        PointOfSale pointOfSale = new PointOfSale(display);
+
+        pointOfSale.onBarcode("");
+
+        verify(display).showEmptyBarcodeError();
+    }
 }
