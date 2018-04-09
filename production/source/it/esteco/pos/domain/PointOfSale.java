@@ -1,8 +1,5 @@
 package it.esteco.pos.domain;
 
-import it.esteco.pos.domain.ports.Catalog;
-import it.esteco.pos.domain.ports.Display;
-
 public class PointOfSale {
     private Display display;
     private Catalog catalog;
@@ -18,11 +15,11 @@ public class PointOfSale {
             return;
         }
         
-        Money price = catalog.findPrice(barcode);
-        if (price != null) {
-            display.showPrice(price);
+        String priceAsText = catalog.findPrice(barcode);
+        if (priceAsText != null) {
+            display.showPrice(priceAsText);
         } else {
-            display.showProductNotFoundFor(barcode);
+            display.showProductNotFound(barcode);
         }
     }
 }

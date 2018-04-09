@@ -1,6 +1,5 @@
 package it.esteco.pos.domain;
 
-import it.esteco.pos.PointOfSale;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +12,7 @@ public class SellOneItemTest {
     private Catalog catalog;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         display = mock(Display.class);
         catalog = mock(Catalog.class);
         pointOfSale = new PointOfSale(display, catalog);

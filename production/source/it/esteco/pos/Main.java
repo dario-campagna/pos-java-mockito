@@ -2,6 +2,7 @@ package it.esteco.pos;
 
 import it.esteco.pos.adapters.ConsoleDisplay;
 import it.esteco.pos.adapters.InMemoryCatalog;
+import it.esteco.pos.domain.PointOfSale;
 
 import java.util.Scanner;
 
