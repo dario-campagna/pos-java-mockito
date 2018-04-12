@@ -29,5 +29,6 @@ public class PointOfSale {
 
     public void onTotalRequested() {
         display.showPrice(cart.getTotal());
+        cart.clear();
     }
 }

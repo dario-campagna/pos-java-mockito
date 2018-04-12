@@ -4,4 +4,6 @@ public interface Cart {
     void add(Money price);
 
     Money getTotal();
+
+    void clear();
 }

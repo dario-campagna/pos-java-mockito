@@ -20,4 +20,9 @@ public class InMemoryCart implements Cart {
     public Money getTotal() {
         return prices.stream().reduce(new Money(0), (a, b) -> a.plus(b));
     }
+
+    @Override
+    public void clear() {
+        prices.clear();
+    }
 }

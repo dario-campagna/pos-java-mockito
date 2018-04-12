@@ -57,4 +57,13 @@ public class PointOfSaleEndToEndTest {
         applicationRunner.showsPrice("$11.99");
         applicationRunner.showsPrice("$19.94");
     }
+
+    @Test
+    public void totalClosesCart() {
+        fakeOperator.input("123456\nTOTAL\nTOTAL\n");
+        applicationRunner.start();
+        applicationRunner.showsPrice("$7.95");
+        applicationRunner.showsPrice("$7.95");
+        applicationRunner.showsPrice("$0.00");
+    }
 }

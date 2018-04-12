@@ -37,7 +37,6 @@ public class RequestTotalTest {
 
         pointOfSale.onBarcode("123456");
 
-
         pointOfSale.onTotalRequested();
 
         verify(cart).add(new Money(795));
@@ -59,5 +58,20 @@ public class RequestTotalTest {
         verify(display, times(2)).showPrice(new Money(795));
         verify(cart).getTotal();
         verify(display).showPrice(new Money(1590));
+    }
+
+    @Test
+    public void clearCart() {
+        when(catalog.findPrice("123456")).thenReturn(new Money(795));
+        when(cart.getTotal()).thenReturn(new Money(795));
+
+        pointOfSale.onBarcode("123456");
+
+        pointOfSale.onTotalRequested();
+
+        verify(cart).add(new Money(795));
+        verify(cart).getTotal();
+        verify(cart).clear();
+        verify(display, times(2)).showPrice(new Money(795));
     }
 }
